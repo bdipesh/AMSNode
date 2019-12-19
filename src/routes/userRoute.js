@@ -2,8 +2,9 @@ import express from 'express';
 const router = express.Router();
 import userDetails from '../controller/userDetails'
 
+
 router.get('/users', function(req, res, next) {
     const details = new userDetails()
-    res.json(details.getAllUsers());
+    res.json(details.userList());
 });
-export default userRouters;
+export default router;

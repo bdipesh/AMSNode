@@ -6,7 +6,7 @@
     "description": "API collections for AMS."
   },
   "host": "localhost:3000",
-  "basePath": "/api/v1",
+  "basePath": "",
   "tags": [
     {
       "name": "Users",
@@ -35,7 +35,7 @@
             "in": "body",
             "description": "User that we want to create",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "/models/users"
             }
           }
         ],
