@@ -1,4 +1,4 @@
-import mongoose from '../controller/connections'
+import mongoose from '../bin/connections'
 
 const schemaAttendance = {
     student:

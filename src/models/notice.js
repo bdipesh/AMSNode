@@ -1,4 +1,4 @@
-import mongoose from '../controller/connections'
+import mongoose from '../bin/connections'
 
 const schemaNotice = {
     noticeId: {
@@ -18,6 +18,7 @@ const schemaNotice = {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User'
     },
+    timeStamp: true,
     file: [{type: String}],
     feedBack: [{
             users: {
@@ -27,12 +28,7 @@ const schemaNotice = {
             feedback: {
                 type: String,
             }}
-    ],
-    like: [{
-            users: {
-                type: mongoose.SchemaTypes.ObjectId,
-                ref: 'User'
-            }}]
+    ]
 };
 const collectionName = "notice";
 const noticeSchema = mongoose.Schema(schemaNotice);

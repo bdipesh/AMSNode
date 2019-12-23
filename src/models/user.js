@@ -1,4 +1,4 @@
-import mongoose from '../controller/connections'
+import mongoose from '../bin/connections'
 
 const schema = {
     name: {
@@ -56,6 +56,7 @@ const User = mongoose.model(collectionName, userSchema);
 exports.getAllUsers = (perPage, page, filters) => {
     return new Promise((resolve, reject) => {
         User.find()
+            // .select('password ')
             .limit(parseInt(perPage))
             .skip(parseInt(page))
             .exec(function (err, users) {
@@ -72,7 +73,7 @@ exports.getAllUsers = (perPage, page, filters) => {
 exports.getUserByEmail = (email) => {
     return new Promise((resolve, reject)=> {
         User.findOne({email: email})
-            .select('email password name role batch course')
+            .select('email name role batch course')
             .then((response)=> {
             resolve(response)
         }).catch((error)=> {

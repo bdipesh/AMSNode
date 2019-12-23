@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import config from './config';
+import config from '../config';
 
-exports.checkToken = (req, res, next) => {
+exports.verifyToken = (req, res, next) => {
     let token = req.headers['x-access-token'] || req.headers['authorization'];
     if (!token) {
         return res.json({
@@ -14,8 +14,6 @@ exports.checkToken = (req, res, next) => {
     }
 
     if (token) {
-        console.log(token)
-        console.log(config.secret)
         jwt.verify(token, config.secret, (err, decoded) => {
             if (err) {
                 return res.json({
@@ -26,11 +24,6 @@ exports.checkToken = (req, res, next) => {
                 req.decoded = decoded;
                 next();
             }
-        });
-    } else {
-        return res.json({
-            success: false,
-            message: 'Auth token is not supplied'
         });
     }
 };
